@@ -1,14 +1,14 @@
 [
   {
     "username": "Sall",
-    "hashed_password": "passwo12"
+    "password": "passwo12"
   },
   {
     "username": "Lernantino",
-    "hashed_password": "passwo34"
+    "password": "passwo34"
   },
   {
     "username": "Amiko",
-    "hashed_password": "passwo56"
+    "password": "passwo56"
   }
 ]
