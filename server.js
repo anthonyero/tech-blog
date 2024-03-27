@@ -5,6 +5,7 @@ const session = require('session');
 const exphbs = require('express-handlebars');
 
 // Import routes and helpers
+const helpers = require('./utils/helpers');
 
 // Importing Sequelize connect object and connect-session-sequelize
 const sequelize = require('./config/connection'); 
@@ -23,8 +24,11 @@ const PORT = process.env.PORT || 3001; // Will pull a port from an environment v
 
 
 // Add Handlebars
+const hbs = exphbs.create({ helpers });
 
 // Have Express use handlebars engine and use set method
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
