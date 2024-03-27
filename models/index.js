@@ -7,7 +7,7 @@ User.hasMany(Post, {
 	onDelete: 'CASCADE'	// When a User is deleted, their posts are as well
 });
 
-Post.belongsTo(User {
+Post.belongsTo(User, {
 	foreignKey: 'user_id'
 });
 
