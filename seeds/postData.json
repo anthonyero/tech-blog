@@ -1,0 +1,17 @@
+[
+  {
+    "title": "An exciting new Post",
+    "text": "Clickbait",
+    "user_id": 1
+  },
+  {
+    "title": "Moving to a new city",
+    "text": "Find a beautiful place to settle down",
+    "user_id": 2
+  },
+  {
+    "title": "Development Woes",
+    "text": "Apps are complicated",
+    "user_id": 3
+  }
+]
