@@ -46,7 +46,7 @@ const signupFormHandler = async (event) => {
       alert(response.statusText);
     }
   } else {
-    window.alert('Please ensure you provide a username 4-12 characters long and a password 8 characters long')
+    alert('Please ensure you provide a username 4-12 characters long and a password 8 characters long')
   }
 };
 
