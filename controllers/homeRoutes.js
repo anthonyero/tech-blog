@@ -48,11 +48,26 @@ router.get('/dashboard', async (req, res) => {
 			res.status(500).json(err);
 		}
 	} else {
-		res.send("<p>Please log in</p>")
+		document.location.replace('/api/users/')
 
 	}
 });
 
+router.get('/new-post', async (req, res) => {
+	if (req.session.logged_in) {
+		console.log("Logged in == true")
+		try {
+		
+			
+			res.render('new-blog-post', { logged_in: req.session.logged_in  }) // Make sure to pass logged_in to the template as well. Won't function otherwise
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	} else {
+		document.location.replace('/api/users/')
+
+	}
+});
 
 	
 

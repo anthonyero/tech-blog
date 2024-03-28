@@ -4,5 +4,15 @@
 {{> blog-post-preview}}
 {{/each}}
 
+<button class = "new-post-btn" type="button">New Post!</button>
+<script>
+const newPostRedirect = async (event) => {
+	document.location.replace('/new-post')
+}
 
+document
+  .querySelector('.new-post-btn')
+  .addEventListener('click', newPostRedirect);
+
+</script>
 {{/if}}
