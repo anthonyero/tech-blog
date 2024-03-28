@@ -48,7 +48,7 @@ router.get('/dashboard', async (req, res) => {
 			res.status(500).json(err);
 		}
 	} else {
-		res.send("<p>Please log in</p>")
+		document.location.replace('/api/users/')
 
 	}
 });
