@@ -3,7 +3,7 @@ const { User, Post, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
 	try {
-		const postData = await Post.findAll({
+		const userPostData = await Post.findAll({
 			include: [
 				 {
 					model: User,
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 			]
 		});
 		// Serialize the data 
-		const posts = postData.map((post) => post.get({ plain: true }));
+		const posts = userPostData.map((post) => post.get({ plain: true }));
 		// Send the rendered Handlebars.js template back as the response
 		res.render('homepage', { posts })
 	} catch (err) {
@@ -21,56 +21,29 @@ router.get('/', async (req, res) => {
 	}
 });
 
-// router.get('/dashboard', async (req, res) => {
-// 	try {
-// 		if (req.session.logged_in == true) {
-// 			console.log("Logged in == true")
-// 			const userPostData = await Post.findAll({
-// 				include: [
-// 					{
-// 						model: User,
-// 						attributes: ['username']
-// 					}
-// 				]
-// 			},{
-// 				where: {
-// 					user_id: req.session.user_id
-// 				}
-// 			});
-
-// 			const posts = postData.map((post) => post.get({ plain: true }));
-// 			res.render('dashboard', { posts })
-// 		} else {
-
-// 		}
-
-// 	} catch (err) {
-// 		console.log(err);
-// 		res.status(500).json(err)
-// 	}
-// })
 
 
+
+// Working with a learning assistant and changed the order of `where`
 router.get('/dashboard', async (req, res) => {
 	if (req.session.logged_in) {
 		console.log("Logged in == true")
 		try {
 		
 			const userPostData = await Post.findAll({
+				where: {user_id: req.session.user_id},
+
 				include: [
-					{
-						model: User,
+					{ 
+						model: User, 
 						attributes: ['username']
 					}
 				]
-			},{
-				where: {
-					user_id: req.session.user_id
-				}
+				
 			});
 
-			const posts = postData.map((post) => post.get({ plain: true }));
-			res.render('dashboard', { posts })
+			const posts = userPostData.map((post) => post.get({ plain: true }));
+			res.render('dashboard', { posts, logged_in: req.session.logged_in  }) // Make sure to pass logged_in to the template as well. Won't function otherwise
 		} catch (err) {
 			res.status(500).json(err);
 		}
