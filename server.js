@@ -1,7 +1,7 @@
 // Importing packages
 const express = require('express');
 const path = require('path');
-const session = require('session');
+const session = require('express-session');
 const exphbs = require('express-handlebars');
 
 // Import routes and helpers
@@ -31,6 +31,7 @@ const sess = {
   store: new SequelizeStore({
     db: sequelize
   })
+};
 
 // Set up sessions as middleware
 app.use(session(sess));
