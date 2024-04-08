@@ -21,8 +21,25 @@ router.get('/', async (req, res) => {
 	}
 });
 
-
-
+// Find a specific blog post
+router.get('/post/:id', async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id , {
+			include: [
+				{
+					model: User, 
+					attributes: ["username"]
+				},
+				{
+					model: Comment
+				}
+			]
+		});
+		res.status(200).json(postData);
+	} catch (err) {
+		res.status(400).json(err)
+	}
+})
 
 // Working with a learning assistant and changed the order of `where`
 router.get('/dashboard', async (req, res) => {
