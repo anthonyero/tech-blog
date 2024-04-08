@@ -16,8 +16,12 @@
   <nav>
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
+    {{#unless logged_in}}
     <a href="/api/users">Login</a>
+    {{/unless}}
+    {{#if logged_in}}
     <button class="logout">Logout</a>
+    {{/if}}
   </nav>
   <main>
     <aside>

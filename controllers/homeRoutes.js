@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 		// Serialize the data 
 		const posts = userPostData.map((post) => post.get({ plain: true }));
 		// Send the rendered Handlebars.js template back as the response
-		res.render('homepage', { posts })
+		res.render('homepage', { posts, logged_in: req.session.logged_in })
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
