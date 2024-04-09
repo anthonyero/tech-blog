@@ -5,6 +5,15 @@
 	<p>{{post.text}} </p>
 </header>
 
+<div class="comments-container">
+
+{{#each post.comments as |comment| }} 
+
+{{> comment}}
+
+{{/each}} 
+
+</div>
 {{!-- {{> blog-post}} --}}
 
 
