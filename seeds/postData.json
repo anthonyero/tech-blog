@@ -13,5 +13,15 @@
     "title": "Development Woes",
     "text": "Apps are complicated",
     "user_id": 3
+  }, 
+  {
+    "title": "Using Handlebars",
+    "text": "Apps are complicated",
+    "user_id": 2
+  },
+    {
+    "title": "Pass relevant variables to their appropriate template engine",
+    "text": "For Handlebars, ensure that you include variables of interest to the template such as `logged_in`",
+    "user_id": 2
   }
 ]
