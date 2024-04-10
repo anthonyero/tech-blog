@@ -1,0 +1,23 @@
+<header>
+	<h2>{{post.title}}</h2>
+	<p>Posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
+
+	<p>{{post.text}} </p>
+</header>
+
+<div class="comments-container">
+
+{{#each post.comments as |comment| }} 
+
+{{> comment}}
+
+{{/each}} 
+
+</div>
+{{!-- {{> blog-post}} --}}
+
+
+{{!-- {{#each comments as |comment| }} --}}
+
+{{!-- {{> comment}} --}}
+{{!-- {{/each}} --}}
