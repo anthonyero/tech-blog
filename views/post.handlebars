@@ -14,10 +14,37 @@
 {{/each}} 
 
 </div>
-{{!-- {{> blog-post}} --}}
+
+<button class = "new-comment-btn" type="button">New Comment</button>
+
+<div class="new-comment-container" style="display:none">
+	<h2>New Comment</h2>
+
+	<form class="form comment-form">
+	  <div class="form-group">
+	    <label for="new-comment-text">Text:</label>
+	    <input class="form-input" type="text" id="new-comment-text" />
+	  </div>
+	  <div class="form-group">
+	    <button class="comment-btn btn btn-primary" type="submit">Post!</button>
+	  </div>
+	</form>
+</div>
 
 
-{{!-- {{#each comments as |comment| }} --}}
+<script>
 
-{{!-- {{> comment}} --}}
-{{!-- {{/each}} --}}
+
+
+const newCommentRender = async (event) => {
+	document.querySelector(".new-comment-container").removeAttribute("style");
+
+
+
+}
+
+document
+  .querySelector('.new-comment-btn')
+  .addEventListener('click', newCommentRender);
+
+</script>
