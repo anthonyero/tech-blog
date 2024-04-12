@@ -15,6 +15,7 @@
 
 </div>
 
+{{#if logged_in}}
 <button class = "new-comment-btn" type="button">New Comment</button>
 
 <div title= "{{post.id}}" class="new-comment-container" style="display: none">
@@ -31,6 +32,7 @@
 	  </div>
 	</form>
 </div>
+{{/if }}
 
 <script src="/js/new-comment.js"></script>
 <script>
