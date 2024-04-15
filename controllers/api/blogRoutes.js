@@ -28,11 +28,12 @@ router.post('/new-comment', async (req, res) => {
 // Delete Post
 router.delete('/delete', async (req, res) => {
 	try {
-		postId = req.body.target;
+		postId = req.body.target; // When testing, send with target as the object property
 		const postData = await Post.findByPk(postId)
 
 		if (postData === null) {
 			console.log('No record found');
+			res.status(404).json("No record found")
 			return;
 		} 
 
