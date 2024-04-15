@@ -24,6 +24,36 @@ router.post('/new-comment', async (req, res) => {
 	}
 });
 
+// Retrieve Post to Edit
+router.get('/edit-get/:id', async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id);
+		const post = postData.get({ plain: true });
+
+		if (postData.user_id === req.session.user_id) {
+			res.render('update-blog-post', { post, logged_in: req.session.logged_in })
+		}
+
+	} catch (err) {
+		res.status(400).json(err)
+	}
+})
+
+// Update a post 
+router.put('/update', async (req, res) => {
+	try {
+		const postData = await Post.update(
+			{ text: req.body.text }, 
+			{ where: {
+				id: req.body.postId,
+				user_id: req.session.user_id
+				}
+			});
+		res.status(202).json(postData);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+})
 
 // Delete Post
 router.delete('/delete', async (req, res) => {
