@@ -39,6 +39,22 @@ router.get('/edit-get/:id', async (req, res) => {
 	}
 })
 
+// Update a post 
+router.put('/update', async (req, res) => {
+	try {
+		const postData = await Post.update(
+			{ text: req.body.text }, 
+			{ where: {
+				id: req.body.postId,
+				user_id: req.session.user_id
+				}
+			});
+		res.status(202).json(postData);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+})
+
 // Delete Post
 router.delete('/delete', async (req, res) => {
 	try {
